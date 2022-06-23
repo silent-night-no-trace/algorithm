@@ -34,39 +34,4 @@ public class Solution370 {
 		return difference.result();
 	}
 
-
-	static class Differ {
-		private int[] diff;
-
-		public Differ(int[] nums) {
-			int length = nums.length;
-			if (length <= 0) {
-				return;
-			}
-			diff = new int[length];
-			diff[0] = nums[0];
-			for (int i = 1; i < length; i++) {
-				diff[i] = nums[i] - nums[i - 1];
-			}
-		}
-
-		public void add(int i, int j, int val) {
-			int length = diff.length;
-
-			diff[i] += val;
-			if (j + 1 < length) {
-				diff[j + 1] -= val;
-			}
-		}
-
-		public int[] result() {
-			int length = diff.length;
-			int[] res = new int[length];
-			res[0] = diff[0];
-			for (int i = 1; i < length; i++) {
-				res[i] = res[i - 1] + diff[i];
-			}
-			return res;
-		}
-	}
 }
